@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 
 import { AuthFlow } from './components/AuthFlow';
 import { HomePage } from './components/HomePage';
+import Landing from './pages/Landing';
 import { Dashboard } from './components/Dashboard';
 import { PlansPage } from './components/PlansPage';
 import { ToolDetail } from './components/ToolDetail';
@@ -13,7 +14,6 @@ import { KnowledgeMain } from './components/knowledge/KnowledgeMain';
 import { LearnPage } from './components/LearnPage';
 import { ArticleViewer } from './components/ArticleViewer';
 import { AIFinancialAssistant } from './components/dashboard/AIFinancialAssistant';
-import BgSpline from './components/BgSpline';
 
 export function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -42,11 +42,9 @@ export function App() {
   };
 
   return (
-    <>
-      <BgSpline />
-      <Router>
-        <Routes>
-        <Route path="/" element={<HomePage />} />
+    <Router>
+      <Routes>
+        <Route path="/" element={<Landing />} />
         <Route path="/plans" element={<PlansPage />} />
         <Route path="/login" element={<AuthFlow onLoginSuccess={handleLoginSuccess} />} />
         <Route path="/signup" element={<SignUp onSignUpSuccess={() => window.location.href = '/dashboard'} />} />
@@ -63,6 +61,5 @@ export function App() {
         </Route>
       </Routes>
     </Router>
-    </>
   );
 }
