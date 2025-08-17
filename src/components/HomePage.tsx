@@ -4,8 +4,7 @@ import { ArrowRightIcon, PlayIcon, UsersIcon, LineChartIcon, ClockIcon, BrainIco
 import { useNavigate } from 'react-router-dom';
 import { Footer } from './Footer';
 
-// Dashboard image path
-const dashboardImagePath = '/wealthpulse-dashboard.png';
+
 
 function FeaturesSection() {
   return (
@@ -57,8 +56,6 @@ function FeaturesSection() {
 
 export function HomePage() {
   const navigate = useNavigate();
-  const [imageLoaded, setImageLoaded] = useState(false);
-  const [imageError, setImageError] = useState(false);
   
   const handleGetStarted = () => {
     navigate('/login');
@@ -108,89 +105,63 @@ export function HomePage() {
               </div>
             </div>
             <div className="relative">
-              {/* Dashboard Preview */}
-              <div 
-                onClick={handleGetStarted}
-                className="relative z-10 rounded-xl overflow-hidden shadow-2xl shadow-blue-500/10 border border-gray-700/50 hover:shadow-blue-500/20 hover:border-blue-500/30 transition-all duration-300 cursor-pointer group"
-              >
-                <div className="bg-[#151822] p-4 border-b border-gray-700/50">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                      <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                      <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    </div>
-                    <div className="text-sm text-gray-400">WealthPulse™ Dashboard</div>
-                  </div>
-                </div>
-                {!imageLoaded && !imageError && (
-                  <div className="flex items-center justify-center p-12 bg-[#1A1F2E] rounded-b-xl">
-                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-yellow-500"></div>
-                    <span className="ml-3 text-gray-400">Loading dashboard preview...</span>
-                  </div>
-                )}
-                <img 
-                  src={dashboardImagePath} 
-                  alt="WealthPulse Dashboard Preview" 
-                  className={`w-full h-auto rounded-b-xl transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
-                  onLoad={() => {
-                    console.log('Dashboard image loaded successfully');
-                    setImageLoaded(true);
-                  }}
-                  onError={(e) => {
-                    console.error('Failed to load dashboard image:', e.currentTarget.src);
-                    setImageError(true);
-                    e.currentTarget.style.display = 'none';
-                    // Show fallback content
-                    const fallback = e.currentTarget.parentElement?.querySelector('.dashboard-fallback');
-                    if (fallback) {
-                      (fallback as HTMLElement).style.display = 'flex';
-                    }
-                  }}
-                />
-                {/* Fallback content if image fails to load */}
-                <div className="dashboard-fallback hidden flex-col items-center justify-center p-12 bg-[#1A1F2E] rounded-b-xl">
-                  <div className="bg-blue-500/20 p-6 rounded-full mb-4">
-                    <BarChart2Icon className="h-12 w-12 text-blue-400" />
-                  </div>
-                  <h4 className="text-white font-semibold mb-2">WealthPulse™ Dashboard</h4>
-                  <p className="text-gray-400 text-center text-sm mb-4">
-                    Track your portfolio performance, monitor investments, and get AI-powered insights
-                  </p>
-                  <div className="grid grid-cols-2 gap-4 w-full max-w-xs">
-                    <div className="bg-[#23263A] p-3 rounded-lg text-center">
-                      <div className="text-green-500 font-bold text-lg">€24,395</div>
-                      <div className="text-gray-400 text-xs">Portfolio Value</div>
-                    </div>
-                    <div className="bg-[#23263A] p-3 rounded-lg text-center">
-                      <div className="text-yellow-500 font-bold text-lg">+12.4%</div>
-                      <div className="text-gray-400 text-xs">Performance</div>
+              {/* Spline Animation - ClarityStream */}
+              <div className="relative z-10 rounded-xl overflow-hidden shadow-2xl shadow-blue-500/10 border border-gray-700/50 hover:shadow-blue-500/20 hover:border-blue-500/30 transition-all duration-300 group">
+                {/* Spline Animation Container */}
+                <div className="relative w-full h-[500px] md:h-[600px] bg-gradient-to-br from-[#151822] to-[#1A1F2E] rounded-xl overflow-hidden">
+                  {/* Spline iframe */}
+                  <iframe 
+                    src='https://my.spline.design/claritystream-UP1e3zVdkyCdHDXSf8h1Ko0O/' 
+                    frameBorder='0' 
+                    width='100%' 
+                    height='100%'
+                    className="w-full h-full rounded-xl"
+                    title="ClarityStream AI Animation"
+                    loading="lazy"
+                  />
+                  
+                  {/* Interactive Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#151822]/80 via-transparent to-transparent pointer-events-none" />
+                  
+                  {/* Floating UI Elements */}
+                  <div className="absolute top-6 left-6 pointer-events-none">
+                    <div className="bg-blue-500/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-medium border border-blue-500/30">
+                      AI-Powered
                     </div>
                   </div>
-                </div>
-                {/* Overlay with "Live Preview" badge */}
-                <div className="absolute top-6 right-6">
-                  <div className="bg-green-500/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1">
-                    <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
-                    Live Preview
+                  
+                  <div className="absolute top-6 right-6 pointer-events-none">
+                    <div className="bg-green-500/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-medium border border-green-500/30 flex items-center gap-1">
+                      <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                      Interactive
+                    </div>
+                  </div>
+                  
+                  {/* Bottom CTA Overlay */}
+                  <div className="absolute bottom-6 left-6 right-6 pointer-events-none">
+                    <div className="bg-black/40 backdrop-blur-sm rounded-lg p-4 border border-white/10">
+                      <div className="text-white text-center">
+                        <div className="text-sm text-gray-300 mb-2">Experience the Future of Investing</div>
+                        <button 
+                          onClick={handleGetStarted}
+                          className="bg-yellow-500 text-black font-medium px-6 py-2 rounded-lg hover:bg-yellow-400 transition-all shadow-lg shadow-yellow-500/20 flex items-center gap-2 mx-auto"
+                        >
+                          Get Started
+                          <ArrowRightIcon size={16} />
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 
-                {/* Hover overlay */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-lg border border-white/20">
-                    <div className="text-white font-medium flex items-center gap-2">
-                      <ArrowRightIcon size={20} />
-                      Click to Get Started
-                    </div>
-                  </div>
-                </div>
-                {/* Glow effect */}
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-yellow-500/30 to-blue-500/30 rounded-xl blur opacity-30"></div>
+                {/* Enhanced Glow Effects */}
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-yellow-500/20 rounded-xl blur opacity-40 group-hover:opacity-60 transition-all duration-500"></div>
+                
+                {/* Decorative Elements */}
+                <div className="absolute -bottom-6 -right-6 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse" style={{animationDuration: '4s'}}></div>
+                <div className="absolute -top-6 -left-6 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{animationDuration: '6s'}}></div>
+                <div className="absolute top-1/2 -left-12 w-32 h-32 bg-yellow-500/5 rounded-full blur-2xl animate-pulse" style={{animationDuration: '3s'}}></div>
               </div>
-              {/* Decorative elements */}
-              <div className="absolute -bottom-6 -right-6 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl"></div>
-              <div className="absolute -top-6 -left-6 w-64 h-64 bg-yellow-500/10 rounded-full blur-3xl"></div>
             </div>
           </div>
         </div>
