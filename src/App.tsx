@@ -13,6 +13,7 @@ import { KnowledgeMain } from './components/knowledge/KnowledgeMain';
 import { LearnPage } from './components/LearnPage';
 import { ArticleViewer } from './components/ArticleViewer';
 import { AIFinancialAssistant } from './components/dashboard/AIFinancialAssistant';
+import BgSpline from './components/BgSpline';
 
 export function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -41,8 +42,10 @@ export function App() {
   };
 
   return (
-    <Router>
-      <Routes>
+    <>
+      <BgSpline />
+      <Router>
+        <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/plans" element={<PlansPage />} />
         <Route path="/login" element={<AuthFlow onLoginSuccess={handleLoginSuccess} />} />
@@ -60,5 +63,6 @@ export function App() {
         </Route>
       </Routes>
     </Router>
+    </>
   );
 }

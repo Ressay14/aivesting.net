@@ -1,58 +1,9 @@
-import React, { useState } from 'react';
-import { Navigation } from './Navigation';
-import { ArrowRightIcon, PlayIcon, UsersIcon, LineChartIcon, ClockIcon, BrainIcon, StarIcon, BarChart2Icon, PieChartIcon, ShieldIcon, TrendingUpIcon, LightbulbIcon, TargetIcon, BellIcon, CloudIcon } from 'lucide-react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Footer } from './Footer';
-
-
-
-function FeaturesSection() {
-  return (
-    <section id="features" className="relative py-20 px-6 md:px-16 lg:px-24 bg-transparent">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-white text-center mb-10 drop-shadow-lg">Features</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Feature 1 */}
-          <div className="bg-gradient-to-br from-[#181C2A]/80 to-[#23263A]/80 rounded-2xl shadow-xl p-8 border border-blue-500/10 flex flex-col items-center text-center backdrop-blur-xl">
-            <PieChartIcon className="h-10 w-10 text-blue-400 mb-4 animate-pulse" />
-            <h3 className="text-xl font-bold text-white mb-2">AI Portfolio Optimization</h3>
-            <p className="text-blue-100/90">Let advanced AI optimize your asset allocation for maximum returns and minimum risk, with real-time, animated insights.</p>
-          </div>
-          {/* Feature 2 */}
-          <div className="bg-gradient-to-br from-[#181C2A]/80 to-[#23263A]/80 rounded-2xl shadow-xl p-8 border border-yellow-500/10 flex flex-col items-center text-center backdrop-blur-xl">
-            <BellIcon className="h-10 w-10 text-yellow-400 mb-4 animate-bounce" />
-            <h3 className="text-xl font-bold text-white mb-2">Real-Time Alerts</h3>
-            <p className="text-blue-100/90">Get instant, AI-powered alerts for market opportunities, portfolio changes, and risk events—never miss a beat.</p>
-          </div>
-          {/* Feature 3 */}
-          <div className="bg-gradient-to-br from-[#181C2A]/80 to-[#23263A]/80 rounded-2xl shadow-xl p-8 border border-green-500/10 flex flex-col items-center text-center backdrop-blur-xl">
-            <BarChart2Icon className="h-10 w-10 text-green-400 mb-4 animate-pulse" />
-            <h3 className="text-xl font-bold text-white mb-2">Sentiment Analysis</h3>
-            <p className="text-blue-100/90">Track market sentiment across sectors and assets, powered by real-time news and social data.</p>
-          </div>
-          {/* Feature 4 */}
-          <div className="bg-gradient-to-br from-[#181C2A]/80 to-[#23263A]/80 rounded-2xl shadow-xl p-8 border border-purple-500/10 flex flex-col items-center text-center backdrop-blur-xl">
-            <BrainIcon className="h-10 w-10 text-purple-400 mb-4 animate-bounce" />
-            <h3 className="text-xl font-bold text-white mb-2">Personalized Insights</h3>
-            <p className="text-blue-100/90">Receive actionable, plain-English insights tailored to your goals, risk, and experience level.</p>
-          </div>
-          {/* Feature 5 */}
-          <div className="bg-gradient-to-br from-[#181C2A]/80 to-[#23263A]/80 rounded-2xl shadow-xl p-8 border border-teal-500/10 flex flex-col items-center text-center backdrop-blur-xl">
-            <CloudIcon className="h-10 w-10 text-teal-400 mb-4 animate-pulse" />
-            <h3 className="text-xl font-bold text-white mb-2">Secure Cloud Sync</h3>
-            <p className="text-blue-100/90">Your data is encrypted and securely synced across devices, with full privacy and control.</p>
-          </div>
-          {/* Feature 6 */}
-          <div className="bg-gradient-to-br from-[#181C2A]/80 to-[#23263A]/80 rounded-2xl shadow-xl p-8 border border-pink-500/10 flex flex-col items-center text-center backdrop-blur-xl">
-            <ArrowRightIcon className="h-10 w-10 text-pink-400 mb-4 animate-bounce" />
-            <h3 className="text-xl font-bold text-white mb-2">Easy Onboarding</h3>
-            <p className="text-blue-100/90">Get started in minutes with a friendly, guided onboarding flow—no finance background required.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
+import Header from './Header';
+import Hero from '../sections/Hero';
+import Features from '../sections/Features';
+import GlassCard from './GlassCard';
 
 export function HomePage() {
   const navigate = useNavigate();
@@ -60,408 +11,83 @@ export function HomePage() {
   const handleGetStarted = () => {
     navigate('/login');
   };
-  return <div className="min-h-screen w-full bg-[#0B0E15] text-white">
-      <Navigation />
-      {/* Hero Section */}
-      <section className="relative py-24 px-6 md:px-16 lg:px-24 overflow-hidden">
-        {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/10 to-transparent pointer-events-none"></div>
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="relative z-10">
-              <div className="mb-6">
-                <h1 className="text-5xl md:text-6xl font-extrabold mb-4 tracking-tight">
-                  <span>Track.</span>
-                  <span className="text-yellow-500 block md:inline">
-                    {' '}
-                    Optimize.
-                  </span>
-                  <span className="block md:inline"> Invest.</span>
-                </h1>
-                <p className="text-xl md:text-2xl text-gray-300 font-light leading-relaxed mt-6">
-                  Plan smarter, invest wiser, and improve your financial
-                  wellness with AI-powered tools.
-                </p>
-              </div>
-              <div className="flex flex-wrap gap-4 mt-10">
-                <button onClick={handleGetStarted} className="bg-yellow-500 text-black font-medium px-10 py-4 rounded-lg hover:bg-yellow-400 transition-all shadow-lg shadow-yellow-500/20 flex items-center gap-2 text-lg">
-                  Get Started
-                  <ArrowRightIcon size={20} />
-                </button>
-                <button className="border border-gray-700 bg-[#151822]/50 backdrop-blur-sm text-white font-medium px-10 py-4 rounded-lg hover:bg-[#1A1F2E] transition-all flex items-center gap-2 text-lg">
-                  See Demo
-                  <PlayIcon size={20} />
-                </button>
-              </div>
-              <div className="mt-12">
-                <div className="flex flex-wrap items-center gap-2 text-sm text-gray-400">
-                  <StarIcon className="h-4 w-4 text-yellow-500" />
-                  <StarIcon className="h-4 w-4 text-yellow-500" />
-                  <StarIcon className="h-4 w-4 text-yellow-500" />
-                  <StarIcon className="h-4 w-4 text-yellow-500" />
-                  <StarIcon className="h-4 w-4 text-yellow-500" />
-                  <span className="ml-1">Trusted by 150+ users worldwide</span>
-                </div>
-              </div>
-            </div>
-            <div className="relative">
-              {/* Spline Animation - ClarityStream */}
-              <div className="relative z-10 rounded-xl overflow-hidden shadow-2xl shadow-blue-500/10 border border-gray-700/50 hover:shadow-blue-500/20 hover:border-blue-500/30 transition-all duration-300 group">
-                {/* Spline Animation Container */}
-                <div className="relative w-full h-[500px] md:h-[600px] bg-gradient-to-br from-[#151822] to-[#1A1F2E] rounded-xl overflow-hidden">
-                  {/* Spline iframe */}
-                  <iframe 
-                    src='https://my.spline.design/claritystream-UP1e3zVdkyCdHDXSf8h1Ko0O/' 
-                    frameBorder='0' 
-                    width='100%' 
-                    height='100%'
-                    className="w-full h-full rounded-xl"
-                    title="ClarityStream AI Animation"
-                    loading="lazy"
-                  />
-                  
-                  {/* Interactive Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#151822]/80 via-transparent to-transparent pointer-events-none" />
-                  
-                  {/* Floating UI Elements */}
-                  <div className="absolute top-6 left-6 pointer-events-none">
-                    <div className="bg-blue-500/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-medium border border-blue-500/30">
-                      AI-Powered
-                    </div>
-                  </div>
-                  
-                  <div className="absolute top-6 right-6 pointer-events-none">
-                    <div className="bg-green-500/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-medium border border-green-500/30 flex items-center gap-1">
-                      <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                      Interactive
-                    </div>
-                  </div>
-                  
-                  {/* Bottom CTA Overlay */}
-                  <div className="absolute bottom-6 left-6 right-6 pointer-events-none">
-                    <div className="bg-black/40 backdrop-blur-sm rounded-lg p-4 border border-white/10">
-                      <div className="text-white text-center">
-                        <div className="text-sm text-gray-300 mb-2">Experience the Future of Investing</div>
-                        <button 
-                          onClick={handleGetStarted}
-                          className="bg-yellow-500 text-black font-medium px-6 py-2 rounded-lg hover:bg-yellow-400 transition-all shadow-lg shadow-yellow-500/20 flex items-center gap-2 mx-auto"
-                        >
-                          Get Started
-                          <ArrowRightIcon size={16} />
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Enhanced Glow Effects */}
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-yellow-500/20 rounded-xl blur opacity-40 group-hover:opacity-60 transition-all duration-500"></div>
-                
-                {/* Decorative Elements */}
-                <div className="absolute -bottom-6 -right-6 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse" style={{animationDuration: '4s'}}></div>
-                <div className="absolute -top-6 -left-6 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{animationDuration: '6s'}}></div>
-                <div className="absolute top-1/2 -left-12 w-32 h-32 bg-yellow-500/5 rounded-full blur-2xl animate-pulse" style={{animationDuration: '3s'}}></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      {/* Dashboard Preview CTA */}
-      <section className="py-16 px-6 md:px-16 lg:px-24 relative">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="bg-gradient-to-r from-[#151822]/80 to-[#23263A]/80 rounded-2xl p-8 border border-gray-700/50 backdrop-blur-sm">
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-              Experience Your <span className="text-yellow-500">Financial Future</span>
-            </h3>
-            <p className="text-gray-300 text-lg mb-6 max-w-2xl mx-auto">
-              Get a glimpse of your personalized WealthPulse™ Dashboard above. Track your portfolio, 
-              monitor performance, and make informed decisions with AI-powered insights.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
-                onClick={handleGetStarted} 
-                className="bg-yellow-500 text-black font-medium px-8 py-3 rounded-lg hover:bg-yellow-400 transition-all shadow-lg shadow-yellow-500/20 flex items-center justify-center gap-2"
-              >
-                <ArrowRightIcon size={18} />
-                Start Your Dashboard
-              </button>
-              <button className="border border-gray-600 bg-[#1A1F2E]/50 text-white font-medium px-8 py-3 rounded-lg hover:bg-[#23263A] transition-all flex items-center justify-center gap-2">
-                <PlayIcon size={18} />
-                Watch Demo
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      {/* Stats Section */}
-      <section className="py-12 relative">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#151822] via-[#1A1F2E] to-[#151822] pointer-events-none"></div>
-        <div className="max-w-7xl mx-auto px-6 md:px-16 lg:px-24 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6">
-            <div className="bg-[#1A1F2E]/80 backdrop-blur-sm border border-gray-800/50 rounded-xl p-6 flex items-center gap-4 hover:border-yellow-500/30 transition-all group">
-              <div className="bg-gradient-to-br from-yellow-500/20 to-yellow-500/5 p-3 rounded-lg">
-                <UsersIcon className="text-yellow-500 h-6 w-6" />
-              </div>
-              <div>
-                <div className="text-2xl font-bold group-hover:text-yellow-500 transition-colors">
-                  150+
-                </div>
-                <div className="text-gray-400 text-sm">Active Users</div>
-              </div>
-            </div>
-            <div className="bg-[#1A1F2E]/80 backdrop-blur-sm border border-gray-800/50 rounded-xl p-6 flex items-center gap-4 hover:border-blue-500/30 transition-all group">
-              <div className="bg-gradient-to-br from-blue-500/20 to-blue-500/5 p-3 rounded-lg">
-                <LineChartIcon className="text-blue-500 h-6 w-6" />
-              </div>
-              <div>
-                <div className="text-2xl font-bold group-hover:text-blue-500 transition-colors">
-                  €100M+
-                </div>
-                <div className="text-gray-400 text-sm">Assets Tracked</div>
-              </div>
-            </div>
-            <div className="bg-[#1A1F2E]/80 backdrop-blur-sm border border-gray-800/50 rounded-xl p-6 flex items-center gap-4 hover:border-purple-500/30 transition-all group">
-              <div className="bg-gradient-to-br from-purple-500/20 to-purple-500/5 p-3 rounded-lg">
-                <ClockIcon className="text-purple-500 h-6 w-6" />
-              </div>
-              <div>
-                <div className="text-2xl font-bold group-hover:text-purple-500 transition-colors">
-                  Real-time
-                </div>
-                <div className="text-gray-400 text-sm">Market Insights</div>
-              </div>
-            </div>
-            <div className="bg-[#1A1F2E]/80 backdrop-blur-sm border border-gray-800/50 rounded-xl p-6 flex items-center gap-4 hover:border-green-500/30 transition-all group">
-              <div className="bg-gradient-to-br from-green-500/20 to-green-500/5 p-3 rounded-lg">
-                <BrainIcon className="text-green-500 h-6 w-6" />
-              </div>
-              <div>
-                <div className="text-2xl font-bold group-hover:text-green-500 transition-colors">
-                  GPT-4
-                </div>
-                <div className="text-gray-400 text-sm">Powered Models</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* Products Section */}
-      <section className="py-24 px-6 md:px-16 lg:px-24 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-900/5 to-transparent pointer-events-none"></div>
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16 relative z-10">
-            <h2 className="text-4xl font-bold mb-4 tracking-tight">
-              Choose Your Path to{' '}
-              <span className="text-yellow-500">Financial Success</span>
-            </h2>
-            <p className="text-gray-400 text-xl max-w-2xl mx-auto font-light">
-              Two powerful platforms designed for your unique financial journey
-            </p>
-          </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10">
-            <div className="bg-[#151822] rounded-xl p-8 border border-gray-800/50 hover:border-blue-500/30 transition-all group shadow-xl">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="bg-gradient-to-br from-blue-500/20 to-blue-500/5 p-3 rounded-lg">
-                  <BarChart2Icon className="h-6 w-6 text-blue-500" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold group-hover:text-blue-500 transition-colors">
-                    MarketPro™
-                  </h3>
-                  <p className="text-gray-400">Advanced Investing Tools</p>
-                </div>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-                <div>
-                  <div className="bg-[#1A1F2E]/50 p-3 rounded-lg inline-block mb-3">
-                    <LineChartIcon className="h-6 w-6 text-blue-400" />
-                  </div>
-                  <h4 className="text-lg font-medium mb-2">
-                    Portfolio Analytics
-                  </h4>
-                  <p className="text-gray-400 text-sm">
-                    AI-driven insights and performance tracking
-                  </p>
-                </div>
-                <div>
-                  <div className="bg-[#1A1F2E]/50 p-3 rounded-lg inline-block mb-3">
-                    <TrendingUpIcon className="h-6 w-6 text-blue-400" />
-                  </div>
-                  <h4 className="text-lg font-medium mb-2">
-                    Market Predictions
-                  </h4>
-                  <p className="text-gray-400 text-sm">
-                    Advanced forecasting and trend analysis
-                  </p>
-                </div>
-                <div>
-                  <div className="bg-[#1A1F2E]/50 p-3 rounded-lg inline-block mb-3">
-                    <ShieldIcon className="h-6 w-6 text-blue-400" />
-                  </div>
-                  <h4 className="text-lg font-medium mb-2">Risk Assessment</h4>
-                  <p className="text-gray-400 text-sm">
-                    Real-time risk monitoring and alerts
-                  </p>
-                </div>
-                <div>
-                  <div className="bg-[#1A1F2E]/50 p-3 rounded-lg inline-block mb-3">
-                    <LightbulbIcon className="h-6 w-6 text-blue-400" />
-                  </div>
-                  <h4 className="text-lg font-medium mb-2">AI Advisor</h4>
-                  <p className="text-gray-400 text-sm">
-                    Personalized investment recommendations
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="bg-[#151822] rounded-xl p-8 border border-gray-800/50 hover:border-purple-500/30 transition-all group shadow-xl">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="bg-gradient-to-br from-purple-500/20 to-purple-500/5 p-3 rounded-lg">
-                  <PieChartIcon className="h-6 w-6 text-purple-500" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold group-hover:text-purple-500 transition-colors">
-                    WealthPulse™
-                  </h3>
-                  <p className="text-gray-400">Financial Wellness Platform</p>
-                </div>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-                <div>
-                  <div className="bg-[#1A1F2E]/50 p-3 rounded-lg inline-block mb-3">
-                    <LineChartIcon className="h-6 w-6 text-purple-400" />
-                  </div>
-                  <h4 className="text-lg font-medium mb-2">Financial Health</h4>
-                  <p className="text-gray-400 text-sm">
-                    Comprehensive wellness tracking
-                  </p>
-                </div>
-                <div>
-                  <div className="bg-[#1A1F2E]/50 p-3 rounded-lg inline-block mb-3">
-                    <PieChartIcon className="h-6 w-6 text-purple-400" />
-                  </div>
-                  <h4 className="text-lg font-medium mb-2">Smart Budgeting</h4>
-                  <p className="text-gray-400 text-sm">
-                    AI-powered expense management
-                  </p>
-                </div>
-                <div>
-                  <div className="bg-[#1A1F2E]/50 p-3 rounded-lg inline-block mb-3">
-                    <TargetIcon className="h-6 w-6 text-purple-400" />
-                  </div>
-                  <h4 className="text-lg font-medium mb-2">Goal Setting</h4>
-                  <p className="text-gray-400 text-sm">
-                    Personalized financial objectives
-                  </p>
-                </div>
-                <div>
-                  <div className="bg-[#1A1F2E]/50 p-3 rounded-lg inline-block mb-3">
-                    <TrendingUpIcon className="h-6 w-6 text-purple-400" />
-                  </div>
-                  <h4 className="text-lg font-medium mb-2">
-                    Savings Automation
-                  </h4>
-                  <p className="text-gray-400 text-sm">
-                    Intelligent saving strategies
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* Testimonials Section */}
-      <section className="py-24 px-6 md:px-16 lg:px-24 relative bg-[#151822]">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/10 via-purple-900/5 to-blue-900/10 pointer-events-none"></div>
-        <div className="max-w-7xl mx-auto relative z-10">
+
+  return (
+    <div className="min-h-screen w-full text-white">
+      <Header />
+      <main>
+        <Hero />
+        <Features />
+        
+        {/* Additional Sections with Glassmorphism */}
+        <section className="relative mx-auto max-w-7xl px-6 py-20 sm:px-10">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 tracking-tight">
-              Trusted by <span className="text-yellow-500">Investors</span>{' '}
-              Worldwide
+            <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
+              Why Choose <span className="text-yellow-400">AIVesting</span>?
             </h2>
-            <p className="text-gray-400 text-xl max-w-2xl mx-auto font-light">
-              See what our users say about their experience with AIVesting
+            <p className="text-lg text-white/70 max-w-2xl mx-auto">
+              Experience the future of investing with AI-powered insights and professional-grade tools.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-[#1A1F2E] p-8 rounded-xl border border-gray-800/50 hover:border-yellow-500/30 transition-all">
-              <div className="flex items-center gap-1 mb-4">
-                <StarIcon className="h-5 w-5 text-yellow-500" />
-                <StarIcon className="h-5 w-5 text-yellow-500" />
-                <StarIcon className="h-5 w-5 text-yellow-500" />
-                <StarIcon className="h-5 w-5 text-yellow-500" />
-                <StarIcon className="h-5 w-5 text-yellow-500" />
+          
+          <div className="grid gap-6 md:grid-cols-3">
+            <GlassCard>
+              <div className="text-center">
+                <div className="w-12 h-12 bg-yellow-400/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl">🚀</span>
+                </div>
+                <h3 className="text-xl font-semibold mb-2">AI-Powered Insights</h3>
+                <p className="text-white/70">Get intelligent recommendations based on your goals and market conditions.</p>
               </div>
-              <p className="text-gray-300 mb-6">
-                "AIVesting has transformed how I approach investing. The
-                AI-powered insights help me make informed decisions, and I've
-                seen a significant improvement in my portfolio performance."
-              </p>
-              <div>
-                <div className="font-medium">Alex Thompson</div>
-                <div className="text-sm text-gray-400">Individual Investor</div>
+            </GlassCard>
+            
+            <GlassCard>
+              <div className="text-center">
+                <div className="w-12 h-12 bg-blue-400/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl">📊</span>
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Real-Time Data</h3>
+                <p className="text-white/70">Access live market data and portfolio analytics 24/7.</p>
               </div>
-            </div>
-            <div className="bg-[#1A1F2E] p-8 rounded-xl border border-gray-800/50 hover:border-yellow-500/30 transition-all">
-              <div className="flex items-center gap-1 mb-4">
-                <StarIcon className="h-5 w-5 text-yellow-500" />
-                <StarIcon className="h-5 w-5 text-yellow-500" />
-                <StarIcon className="h-5 w-5 text-yellow-500" />
-                <StarIcon className="h-5 w-5 text-yellow-500" />
-                <StarIcon className="h-5 w-5 text-yellow-500" />
+            </GlassCard>
+            
+            <GlassCard>
+              <div className="text-center">
+                <div className="w-12 h-12 bg-purple-400/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl">🛡️</span>
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Secure & Private</h3>
+                <p className="text-white/70">Bank-level security with full control over your data.</p>
               </div>
-              <p className="text-gray-300 mb-6">
-                "The portfolio optimization feature is incredible. It suggested
-                adjustments that I wouldn't have considered, and my returns have
-                improved by 12% since implementing them."
-              </p>
-              <div>
-                <div className="font-medium">Sarah Johnson</div>
-                <div className="text-sm text-gray-400">Financial Advisor</div>
-              </div>
-            </div>
-            <div className="bg-[#1A1F2E] p-8 rounded-xl border border-gray-800/50 hover:border-yellow-500/30 transition-all">
-              <div className="flex items-center gap-1 mb-4">
-                <StarIcon className="h-5 w-5 text-yellow-500" />
-                <StarIcon className="h-5 w-5 text-yellow-500" />
-                <StarIcon className="h-5 w-5 text-yellow-500" />
-                <StarIcon className="h-5 w-5 text-yellow-500" />
-                <StarIcon className="h-5 w-5 text-gray-500" />
-              </div>
-              <p className="text-gray-300 mb-6">
-                "As someone new to investing, AIVesting has been an educational
-                tool as much as an investment platform. The AI assistant answers
-                all my questions and helps me learn."
-              </p>
-              <div>
-                <div className="font-medium">Michael Chen</div>
-                <div className="text-sm text-gray-400">Beginner Investor</div>
-              </div>
-            </div>
+            </GlassCard>
           </div>
-        </div>
-      </section>
-      {/* CTA Section */}
-      <section className="py-24 px-6 md:px-16 lg:px-24 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-yellow-900/5 to-transparent pointer-events-none"></div>
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <h2 className="text-4xl font-bold mb-6 tracking-tight">
-            Ready to <span className="text-yellow-500">Transform</span> Your
-            Financial Future?
-          </h2>
-          <p className="text-gray-300 text-xl mb-10 font-light">
-            Join thousands of investors using AIVesting to optimize their
-            portfolios and achieve their financial goals.
-          </p>
-          <button onClick={handleGetStarted} className="bg-gradient-to-r from-yellow-500 to-yellow-400 text-black font-medium px-12 py-4 rounded-lg hover:from-yellow-400 hover:to-yellow-300 transition-all shadow-lg shadow-yellow-500/20 text-lg">
-            Start Your Free Trial
-          </button>
-          <p className="text-gray-400 mt-4 text-sm">No credit card required</p>
-        </div>
-      </section>
-      {/* Footer */}
-      <Footer />
-    </div>;
-};
+        </section>
+        
+        {/* CTA Section */}
+        <section className="relative mx-auto max-w-7xl px-6 py-20 sm:px-10">
+          <div className="text-center">
+            <GlassCard>
+              <h2 className="text-3xl md:text-4xl font-extrabold mb-6">
+                Ready to Transform Your <span className="text-yellow-400">Financial Future</span>?
+              </h2>
+              <p className="text-lg text-white/70 mb-8 max-w-2xl mx-auto">
+                Join thousands of investors who are already using AI to make smarter financial decisions.
+              </p>
+              <div className="flex gap-4 justify-center flex-wrap">
+                <button 
+                  onClick={handleGetStarted}
+                  className="rounded-xl bg-yellow-400 px-8 py-4 font-semibold text-black shadow-lg shadow-yellow-500/20 transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-yellow-300"
+                >
+                  Get Started Free →
+                </button>
+                <button className="rounded-xl border border-white/15 bg-white/5 px-8 py-4 font-semibold text-white/90 backdrop-blur transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/20">
+                  Watch Demo ▷
+                </button>
+              </div>
+            </GlassCard>
+          </div>
+        </section>
+      </main>
+    </div>
+  );
+}
