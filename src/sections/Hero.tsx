@@ -6,7 +6,7 @@ export default function Hero() {
       </span>
 
       <h1 className="mt-6 max-w-3xl text-5xl font-extrabold leading-tight sm:text-6xl">
-        Track. <span className="text-yellow-400">Optimize.</span> Invest.
+        Vision. <span className="text-yellow-400">Strategy.</span> Wealth.
       </h1>
 
       <p className="mt-4 max-w-2xl text-lg text-white/70">

@@ -1,65 +1,60 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-
-import { AuthFlow } from './components/AuthFlow';
-import { HomePage } from './components/HomePage';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Landing from './pages/Landing';
 import { Dashboard } from './components/Dashboard';
-import { PlansPage } from './components/PlansPage';
-import { ToolDetail } from './components/ToolDetail';
+import { Login } from './components/Login';
 import { SignUp } from './components/SignUp';
-import { supabase } from './lib/supabaseClient'; // ✅ for session tracking
-import FeaturesPage from './components/FeaturesPage';
-import { KnowledgeMain } from './components/knowledge/KnowledgeMain';
-import { LearnPage } from './components/LearnPage';
-import { ArticleViewer } from './components/ArticleViewer';
-import { AIFinancialAssistant } from './components/dashboard/AIFinancialAssistant';
+import { Onboarding } from './components/Onboarding';
+import LearnPage from './components/LearnPage';
+import AIAssistant from './components/AIAssistant';
+import AboutPage from './components/AboutPage';
+import PlansPage from './components/PlansPage';
+import UserProfile from './components/UserProfile';
+import { AICopilotProvider } from './lib/context/AICopilotContext';
+import { AuthProvider } from './lib/context/AuthContext';
+import AICopilotDashboard from './components/dashboard/AICopilotDashboard';
 
-export function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  // ✅ Check if user is logged in (persisted login)
-  useEffect(() => {
-    const getSession = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      setIsAuthenticated(!!session);
-    };
-
-    getSession();
-
-    // ✅ Listen for login/logout changes
-    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
-      setIsAuthenticated(!!session);
-    });
-
-    return () => {
-      listener?.subscription.unsubscribe();
-    };
-  }, []);
-
-  const handleLoginSuccess = () => {
-    setIsAuthenticated(true);
+// Wrapper components for Login and SignUp
+const LoginWrapper = () => {
+  const onComplete = () => {
+    console.log('Login completed');
+    // Handle login completion
   };
+  return <Login onComplete={onComplete} />;
+};
 
+const SignUpWrapper = () => {
+  const onSignUpSuccess = () => {
+    console.log('Sign up successful');
+    // Handle sign up success
+  };
+  return <SignUp onSignUpSuccess={onSignUpSuccess} />;
+};
+
+function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/plans" element={<PlansPage />} />
-        <Route path="/login" element={<AuthFlow onLoginSuccess={handleLoginSuccess} />} />
-        <Route path="/signup" element={<SignUp onSignUpSuccess={() => window.location.href = '/dashboard'} />} />
-        <Route path="/features" element={<FeaturesPage />} />
-        <Route path="/learn" element={<LearnPage />} />
-        <Route path="/learn/article/:articleId" element={<ArticleViewer />} />
-        <Route path="/knowledge/*" element={<KnowledgeMain />} />
-        <Route path="/ai-assistant" element={<AIFinancialAssistant />} />
-        <Route
-          path="/dashboard/*"
-          element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />}
-        >
-          <Route path="tools/:toolId" element={<ToolDetail />} />
-        </Route>
-      </Routes>
-    </Router>
+    <AuthProvider>
+      <AICopilotProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/dashboard/*" element={<Dashboard />} />
+            <Route path="/ai-copilot" element={<AICopilotDashboard />} />
+            <Route path="/login" element={<LoginWrapper />} />
+            <Route path="/signup" element={<SignUpWrapper />} />
+            <Route path="/onboarding" element={<Onboarding />} />
+            <Route path="/learn" element={<LearnPage />} />
+            <Route path="/ai-assistant" element={<AIAssistant />} />
+            <Route path="/ai-assistant-marketing" element={<AIAssistant />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/plans" element={<PlansPage />} />
+            <Route path="/profile" element={<UserProfile />} />
+          </Routes>
+        </BrowserRouter>
+      </AICopilotProvider>
+    </AuthProvider>
   );
 }
+
+export default App;

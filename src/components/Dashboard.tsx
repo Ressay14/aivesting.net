@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef, Component } from 'react';
 import { Link, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { LayoutDashboardIcon, WalletIcon, LineChartIcon, SettingsIcon, BellIcon, SearchIcon, UserIcon, ArrowRightIcon, MessageCircleIcon, XIcon, BarChart3Icon, PieChartIcon, TrendingUpIcon, DollarSignIcon, BrainIcon, NewspaperIcon, CalculatorIcon, TargetIcon, ShieldIcon, BarChart2Icon, HeartIcon, LogOutIcon, HelpCircleIcon, CreditCardIcon, UserCogIcon, BellOffIcon, CheckIcon, ChevronRightIcon, AlertTriangleIcon, ChevronLeftIcon, ChevronDownIcon, BarChartIcon, InfoIcon, TrendingDownIcon, ZapIcon, PlusIcon, RefreshCwIcon, MenuIcon, CrownIcon, BookOpenIcon, SparklesIcon } from 'lucide-react';
 import { MarketProDashboard } from './dashboard/MarketProDashboard';
-import { WealthPulseDashboard } from './dashboard/WealthPulseDashboard';
+import WealthPulseDashboard from './dashboard/WealthPulseDashboard';
 import { ToolsDashboard } from './dashboard/ToolsDashboard';
 import { NewsDashboard } from './dashboard/NewsDashboard';
 import { ToolDetail } from './dashboard/ToolDetail';
@@ -12,6 +12,7 @@ import { Footer } from './Footer';
 import { AIAdvisor } from './dashboard/AIAdvisor';
 import { UltraPlanFeatures } from './dashboard/UltraPlanFeatures';
 import { KnowledgeHub } from './dashboard/KnowledgeHub';
+import AICopilotDashboard from './dashboard/AICopilotDashboard';
 interface OnboardingData {
   level: string;
   goals: string[];
@@ -286,13 +287,14 @@ export const Dashboard = () => {
             <BrainIcon className="h-5 w-5 transition-transform group-hover:scale-110 duration-200" />
             {(!sidebarCollapsed || isMobile) && <span>AI Advisor</span>}
           </Link>
-          <Link to="/ai-assistant" className={`flex ${sidebarCollapsed && !isMobile ? 'justify-center' : ''} items-center gap-3 text-gray-400 hover:bg-[#1E2230] px-4 py-3 rounded-lg transition-all duration-200 hover:text-white group relative`}>
-            <SparklesIcon className="h-5 w-5 transition-transform group-hover:scale-110 duration-200" />
+          <button onClick={() => handleTabChange('advisor')} className={`w-full flex ${sidebarCollapsed && !isMobile ? 'justify-center' : ''} items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 group relative
+              ${activeTab === 'advisor' ? 'bg-gradient-to-r from-blue-500/20 to-blue-500/5 text-blue-400' : 'text-gray-400 hover:bg-[#1E2230] hover:text-white'}`}>
+            <SparklesIcon className={`h-5 w-5 transition-transform group-hover:scale-110 duration-200 ${activeTab === 'advisor' ? 'animate-pulse' : ''}`} />
             {(!sidebarCollapsed || isMobile) && <span>Premium AI Assistant</span>}
             <div className="absolute -top-1 -right-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-xs px-1.5 py-0.5 rounded-full font-bold">
               NEW
             </div>
-          </Link>
+          </button>
           <Link to="/dashboard/knowledge" className={`flex ${sidebarCollapsed && !isMobile ? 'justify-center' : ''} items-center gap-3 text-gray-400 hover:bg-[#1E2230] px-4 py-3 rounded-lg transition-all duration-200 hover:text-white group`} title="Your personalized learning center">
             <BookOpenIcon className="h-5 w-5 transition-transform group-hover:scale-110 duration-200" />
             {(!sidebarCollapsed || isMobile) && <span>Knowledge Hub</span>}
@@ -334,6 +336,7 @@ export const Dashboard = () => {
               <NewspaperIcon className={`h-5 w-5 transition-transform group-hover:scale-110 duration-200 ${activeTab === 'news' ? 'animate-pulse' : ''}`} />
               {(!sidebarCollapsed || isMobile) && <span>News</span>}
             </button>
+
           </nav>
         </div>
         {/* Sidebar Footer - User Profile */}
@@ -704,6 +707,7 @@ export const Dashboard = () => {
             <Route path="/advisor" element={<AIAdvisor />} />
             <Route path="/knowledge" element={<KnowledgeHub />} />
             <Route path="/ultra-plan" element={<UltraPlanFeatures />} />
+            <Route path="/ai-assistant" element={<AICopilotDashboard />} />
           </Routes>
         </div>
         {/* Footer */}

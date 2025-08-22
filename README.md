@@ -5,7 +5,7 @@ A comprehensive AI-powered investing platform built with React, TypeScript, and 
 ## Features
 
 - **Markets Dashboard**: Real-time market data and charts
-- **Portfolio Management**: Track and optimize your investments
+- **Portfolio Management**: Vision and strategy for your investments
 - **AI Financial Assistant**: Get AI-powered investment advice
 - **Knowledge Hub**: Learn about investing strategies
 - **Performance Analytics**: Monitor your portfolio performance
